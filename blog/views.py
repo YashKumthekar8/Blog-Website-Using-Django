@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.contrib.auth.mixins import (LoginRequiredMixin,
- UserPassesTestMixin)
+UserPassesTestMixin)
 from django.contrib.auth.models import User
 from django.views.generic import (ListView, DetailView,
-        CreateView, UpdateView, DeleteView)
+        CreateView, UpdateView, DeleteView) 
 
 
 # Entire functionality of the site is performed here
@@ -75,7 +75,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         post = self.get_object()
         return(self.request.user == post.author)
-           
+
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     # Similar to update class 
